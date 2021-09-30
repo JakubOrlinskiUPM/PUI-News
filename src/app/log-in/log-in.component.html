@@ -1,1 +1,24 @@
-<p>log-in works!</p>
+<div class="align-items-center" id="logIn">
+  <div class="text-center">
+    <button class="btn button" type="button" (click)="toggleSignIn()" *ngIf="!showSignIn">
+      <i class="bi bi-person-circle"></i> Log In
+    </button>
+  </div>
+
+  <div class="" *ngIf="showSignIn">
+    <form (ngSubmit)="logIn()" #loginForm="ngForm" class="d-flex flex-row justify-content-around">
+      <label class="form-label">
+        Username:
+        <input type="text" name="username" [(ngModel)]="logInData.username" #username='ngModel' class="form-control" autofocus>
+      </label>
+      <label class="form-label">
+        Password:
+        <input type="password" name="password" [(ngModel)]="logInData.password" #password='ngModel' class="form-control">
+      </label>
+
+      <button class="btn button" type="submit">
+        <i class="bi bi-person-circle"></i> Log In
+      </button>
+    </form>
+  </div>
+</div>

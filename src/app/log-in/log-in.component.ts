@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {LogInService} from "../services/log-in.service";
+
+
+interface LogInData {
+  username: string
+  password: string
+}
 
 @Component({
   selector: 'app-log-in',
@@ -7,9 +14,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogInComponent implements OnInit {
 
-  constructor() { }
+  showSignIn: boolean = false;
+  logInData: LogInData = {username: '', password: ''};
+  @ViewChild('loginForm') loginForm: any;
+
+  constructor(private logInService: LogInService) {
+  }
 
   ngOnInit(): void {
   }
 
+  toggleSignIn() {
+    this.showSignIn = !this.showSignIn;
+  }
+
+  logIn() {
+    console.log("log in");
+    this.logInService.login(this.logInData.username, this.logInData.password).subscribe(
+      (res) => {
+        console.log("success", res)
+      }, (error) => {
+
+      }, () => {
+
+      })
+  }
 }

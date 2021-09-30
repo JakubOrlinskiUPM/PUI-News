@@ -1,1 +1,16 @@
-<p>article-list works!</p>
+<div class="m-3">
+  <div class="d-flex flex-row">
+    <div
+      *ngFor="let category of categoryList"
+      class="m-2"
+      (click)="setCategory(category)"
+      [ngClass]="category === chosenCategory ? 'active' : 'inactive'">
+      {{ category }}
+    </div>
+  </div>
+
+  <div *ngFor="let article of articleList | filterOnCategory:chosenCategory">
+    <app-article-list-item [article]="article"></app-article-list-item>
+  </div>
+
+</div>

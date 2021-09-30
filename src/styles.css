@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+:root {
+  --color-text: white;
+  --color-text-dark: #999;
+  --color-background: #2D2424;
+  --color-accent: #B85C38;
+  --color-accent-dark: #5C3D2E;
+  --color-accent-light: #E0C097;
+}
+
+body {
+  color: var(--color-text)
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+a:hover {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.button {
+  background-color: var(--color-accent);
+  color: var(--color-text);
+}

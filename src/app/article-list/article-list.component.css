@@ -1,0 +1,8 @@
+
+
+.inactive {
+  color: var(--color-text-dark);
+}
+.active {
+  color: var(--color-text);
+}
