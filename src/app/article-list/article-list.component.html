@@ -1,4 +1,4 @@
-<div class="m-3">
+<div class="m-3 container">
   <div class="d-flex flex-row">
     <div
       *ngFor="let category of categoryList"
@@ -9,8 +9,32 @@
     </div>
   </div>
 
-  <div *ngFor="let article of articleList | filterOnCategory:chosenCategory">
-    <app-article-list-item [article]="article"></app-article-list-item>
+  <div *ngFor="let article of articleList | filterOnCategory:chosenCategory; let i = index; ">
+    <div [ngClass]="i % 3 == 0 ? 'row mb-2' : '' ">
+      <div class="col-md-4">
+        <div class="border rounded mb-4 p-1">
+          <strong class="d-inline-block mb-2">{{articleList[i].category}}</strong>
+          <h3>{{articleList[i].title}}</h3>
+          <p class="card-text mb-auto">{{articleList[i].abstract}}</p>
+        </div>
+      </div>
+
+      <div *ngIf="i + 1 < articleList.length" class="col-md-4">
+        <div class="border rounded mb-4 p-1">
+          <strong class="d-inline-block mb-2">{{articleList[i+1].category}}</strong>
+          <h3>{{articleList[i+1].title}}</h3>
+          <p class="card-text mb-auto">{{articleList[i+1].abstract}}</p>
+        </div>
+      </div>
+
+      <div *ngIf="i + 2 < articleList.length" class="col-md-4">
+        <div class="border rounded mb-4 p-1">
+          <strong class="d-inline-block mb-2">{{articleList[i+2].category}}</strong>
+          <h3>{{articleList[i+2].title}}</h3>
+          <p class="card-text mb-auto">{{articleList[i+2].abstract}}</p>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>
