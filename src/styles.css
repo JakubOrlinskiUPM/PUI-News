@@ -4,14 +4,14 @@
 :root {
   --color-text: white;
   --color-text-dark: #999;
-  --color-background: #2D2424;
-  --color-accent: #B85C38;
-  --color-accent-dark: #5C3D2E;
-  --color-accent-light: #E0C097;
+  --color-background: #1B262C;
+  --color-accent: #0F4C75;
+  --color-accent-dark: #3282B8;
+  --color-accent-light: #BBE1FA;
 }
 
 body {
-  color: var(--color-text)
+  color: var(--color-background)
 }
 
 a {
@@ -21,10 +21,15 @@ a {
 
 a:hover {
   text-decoration: none;
-  color: var(--color-text);
+  color: var(--color-text-dark);
 }
 
 .button {
   background-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+.card {
+  background-color: var(--color-accent-dark);
   color: var(--color-text);
 }

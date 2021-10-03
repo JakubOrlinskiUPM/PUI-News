@@ -1,5 +1,5 @@
-<div class="m-3 container">
-  <div class="d-flex flex-row">
+<div class="m-3 container ">
+  <div class="d-flex justify-content-center">
     <div
       *ngFor="let category of categoryList"
       class="m-2"
@@ -9,32 +9,21 @@
     </div>
   </div>
 
-  <div *ngFor="let article of articleList | filterOnCategory:chosenCategory; let i = index; ">
-    <div [ngClass]="i % 3 == 0 ? 'row mb-2' : '' ">
-      <div class="col-md-4">
-        <div class="border rounded mb-4 p-1">
-          <strong class="d-inline-block mb-2">{{articleList[i].category}}</strong>
-          <h3>{{articleList[i].title}}</h3>
-          <p class="card-text mb-auto">{{articleList[i].abstract}}</p>
-        </div>
-      </div>
+  <div class="d-flex justify-content-center">
+    <div class="container">
+      <div class="card-deck row">
+        <div class="card col-md-4 col-sm-6 col-12" *ngFor="let article of articleList | filterOnCategory:chosenCategory">
+          <img class="card-img-top" src="" alt="Card image cap">
+          <h5 class="card-title">{{article.title}}</h5>
+          <div class="card-subtitle">{{article.category}}</div>
+          <p class="card-text">{{article.abstract}}</p>
+          <a href="#" class="btn btn-primary float-right">Go somewhere</a>
+          </div>
 
-      <div *ngIf="i + 1 < articleList.length" class="col-md-4">
-        <div class="border rounded mb-4 p-1">
-          <strong class="d-inline-block mb-2">{{articleList[i+1].category}}</strong>
-          <h3>{{articleList[i+1].title}}</h3>
-          <p class="card-text mb-auto">{{articleList[i+1].abstract}}</p>
-        </div>
-      </div>
-
-      <div *ngIf="i + 2 < articleList.length" class="col-md-4">
-        <div class="border rounded mb-4 p-1">
-          <strong class="d-inline-block mb-2">{{articleList[i+2].category}}</strong>
-          <h3>{{articleList[i+2].title}}</h3>
-          <p class="card-text mb-auto">{{articleList[i+2].abstract}}</p>
-        </div>
       </div>
     </div>
+
   </div>
+
 
 </div>
