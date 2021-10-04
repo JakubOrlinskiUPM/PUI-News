@@ -10,9 +10,6 @@
   --color-accent-light: #BBE1FA;
 }
 
-body {
-  color: var(--color-background)
-}
 
 a {
   text-decoration: none;
@@ -32,4 +29,12 @@ a:hover {
 .card {
   background-color: var(--color-accent-dark);
   color: var(--color-text);
+}
+
+html,
+body,
+#background {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--color-background);
 }

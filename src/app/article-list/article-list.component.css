@@ -1,4 +1,6 @@
-
+.card-subtitle {
+  font-style: italic;
+}
 
 .inactive {
   color: var(--color-text-dark);
