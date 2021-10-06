@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Article} from "../models/article";
+import {LogInService} from "../services/log-in.service";
 
 @Component({
   selector: 'app-article-list',
@@ -12,7 +13,7 @@ export class ArticleListComponent implements OnInit {
 
   articleList: Article[];
 
-  constructor() {
+  constructor(public logInService: LogInService) {
     this.chosenCategory = 'All';
     this.articleList = [{id: 0, category: 'Sports', title: 'Female Soccer Players Are Done Taking Abuse. Let’s Stop Dishing It Out.', subtitle:'When will we stop treating women in sports as second-class citizens?', abstract: 'Players in the National Women’s Soccer League are demanding the respect all female athletes deserve but rarely get.', body:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image_media_type: ""},
       {id: 1, category: 'International', title: 'Boris Johnson: petrol crisis and pig cull part of necessary post-Brexit transition', subtitle: 'Supply chain crisis', abstract: 'Prime minister says UK cannot go back to ‘failed old model’ of immigration and low wages', body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image_media_type: ""},
