@@ -18,7 +18,7 @@ export class LogInComponent implements OnInit {
   logInData: LogInData = {username: 'DEV_TEAM_02', password: '123502'};
   @ViewChild('loginForm') loginForm: any;
 
-  constructor(private logInService: LogInService) {
+  constructor(public logInService: LogInService) {
   }
 
   ngOnInit(): void {
