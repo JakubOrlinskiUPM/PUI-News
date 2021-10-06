@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Article} from "../models/article";
 import { NewsService } from '../services/news.service';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-article-form',
@@ -17,7 +18,7 @@ export class ArticleFormComponent implements OnInit {
   @ViewChild('articleForm') articleForm: any;
 
   constructor(private newsService: NewsService, private route: ActivatedRoute) {
-    this.article = {category: "", title: "", subtitle: "", abstract: ""};
+    this.article = {category: "", title: "", subtitle: "", abstract: "", image_media_type: ""};
     this.imageError = "";
     this.cardImageBase64= "";
     this.isImageSaved = true;
@@ -48,14 +49,14 @@ export class ArticleFormComponent implements OnInit {
     console.log(article.file_input);
     console.log(article);
     if(this.article.id == undefined ){
-      //this.newsService.createArticle(article);
+      this.newsService.createArticle(article);
     }else {
-      //this.newsService.updateArticle(article);
+      this.newsService.updateArticle(article);
     }
 
   }
 
-  /*fileChangeEvent(fileInput: any) {
+  fileChangeEvent(fileInput: any) {
     this.imageError = null;
     if (fileInput.target.files && fileInput.target.files[0]) {
       // Size Filter Bytes
@@ -88,6 +89,7 @@ export class ArticleFormComponent implements OnInit {
       };
       reader.readAsDataURL(fileInput.target.files[0]);
     }
+    return true;
   }
-*/
+
 }

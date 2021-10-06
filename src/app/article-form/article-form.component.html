@@ -3,7 +3,7 @@
 <form #articleForm="ngForm" (ngSubmit)="sendForm(article)">
   <div class="form-group">
     <label> Id: </label>
-    <input class="form-control" type="text" required [(ngModel)]="article.id" name="aid" #aid="ngModel"
+    <input class="form-control" type="text" [(ngModel)]="article.id" name="aid" #aid="ngModel"
            [ngClass]="aid.valid || aid.pristine ? '': 'bg-danger'">
   </div>
   <div class="form-group">
