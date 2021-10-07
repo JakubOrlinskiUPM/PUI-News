@@ -20,12 +20,12 @@
             <p class="card-text">{{article.abstract}}</p>
 
             <div *ngIf="!logInService.isLogged(); else isLoggedIn">
-              <a href="#" class="btn btn-primary float-right">Read more</a>
+              <button class="btn btn-primary float-right">Read more</button>
 <!--            TODO: actually implement forwarding here-->
             </div>
             <ng-template #isLoggedIn>
               <div class="align-self-end">
-                <a href="#" class="btn btn-primary mx-2">Edit</a>
+                <a href="#" [routerLink]="['/articleForm/'+ article.id]" class="btn btn-primary mx-2">Edit</a>
                 <a href="#" class="btn btn-primary">Remove</a>
                 <!--            TODO: actually implement forwarding here-->
               </div>

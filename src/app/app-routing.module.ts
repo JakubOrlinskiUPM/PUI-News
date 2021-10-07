@@ -5,7 +5,7 @@ import {ArticleViewComponent} from "./article-view/article-view.component";
 import {ArticleFormComponent} from "./article-form/article-form.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/articleForm/2', pathMatch: 'full' },
+  { path: '', redirectTo: '/articleList', pathMatch: 'full' },
   { path: 'articleList', component: ArticleListComponent },
   { path: 'articleView/:articleId', component: ArticleViewComponent },
   { path: 'articleForm/:articleId', component: ArticleFormComponent },

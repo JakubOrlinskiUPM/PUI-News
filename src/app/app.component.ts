@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {NewsService} from "./services/news.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PUI-News';
+
+ constructor(private newsService: NewsService) {
+  newsService.setAnonymousApiKey();
+}
+
 }

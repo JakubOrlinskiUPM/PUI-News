@@ -25,6 +25,7 @@ export class ArticleFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.route.paramMap.subscribe(params => {
       const paramId = params.get('articleId');
       if(paramId != null){
@@ -46,12 +47,30 @@ export class ArticleFormComponent implements OnInit {
   }
 
   sendForm(article:Article): void {
-    console.log(article.file_input);
-    console.log(article);
     if(this.article.id == undefined ){
-      this.newsService.createArticle(article);
+      this.newsService.createArticle(article).subscribe(
+        article => { // No errors
+        },
+        err => { // Error treatment
+          console.log('error in create article');
+          console.log(err);
+        },
+        () => { // Operation finished
+          console.log('Create finished');
+        }
+      );;
     }else {
-      this.newsService.updateArticle(article);
+      this.newsService.updateArticle(article).subscribe(
+        article => { // No errors
+        },
+        err => { // Error treatment
+          console.log('Update article goes wrong');
+          console.log(err);
+        },
+        () => { // Operation finished
+          console.log('Update finished');
+        }
+      );
     }
 
   }
@@ -84,7 +103,8 @@ export class ArticleFormComponent implements OnInit {
           this.article.image_media_type = fileInput.target.files[0].type;
           const head = this.article.image_media_type.length + 13;
           this.article.image_data = e.target.result.substring(head, e.target.result.length);
-
+          console.log(this.article);
+          console.log("article");
         };
       };
       reader.readAsDataURL(fileInput.target.files[0]);
