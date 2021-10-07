@@ -13,6 +13,8 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import { FilterOnCategoryPipe } from './pipes/filter-on-category.pipe';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import {NgbAlertModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -30,7 +32,10 @@ import { FilterOnCategoryPipe } from './pipes/filter-on-category.pipe';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot(),
+    NgbAlertModule
   ],
   providers: [],
   bootstrap: [AppComponent]
