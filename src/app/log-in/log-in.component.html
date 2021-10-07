@@ -28,7 +28,7 @@
 
   <ng-template #loggedIn>
     <div  class="text-center">
-      <span class="px-2">Welcome {{logInService.getUser()?.name}}</span>
+      <span class="px-2">Welcome {{logInService.getUser()?.username}}</span>
 
       <button (click)="logInService.logout()" >Sign out</button>
     </div>
