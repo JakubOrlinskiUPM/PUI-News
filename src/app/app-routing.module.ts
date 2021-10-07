@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/articleList', pathMatch: 'full' },
   { path: 'articleList', component: ArticleListComponent },
   { path: 'articleView/:articleId', component: ArticleViewComponent },
+  { path: 'articleForm/:articleId', component: ArticleFormComponent },
   { path: 'articleForm', component: ArticleFormComponent }
 ];
 

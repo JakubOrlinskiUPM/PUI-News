@@ -25,7 +25,7 @@
             </div>
             <ng-template #isLoggedIn>
               <div class="align-self-end">
-                <a href="#" class="btn btn-primary mx-2">Edit</a>
+                <a href="#" [routerLink]="['/articleForm/'+ article.id]" class="btn btn-primary mx-2">Edit</a>
                 <a href="#" class="btn btn-primary">Remove</a>
                 <!--            TODO: actually implement forwarding here-->
               </div>

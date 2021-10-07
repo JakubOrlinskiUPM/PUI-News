@@ -31,6 +31,10 @@ a:hover {
   color: var(--color-text);
 }
 
+label {
+  color: var(--color-text);
+}
+
 html,
 body,
 #background {
