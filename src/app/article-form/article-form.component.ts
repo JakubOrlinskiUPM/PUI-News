@@ -2,7 +2,13 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Article} from "../models/article";
 import { NewsService } from '../services/news.service';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import * as _ from 'lodash';
+
+interface Alert {
+  type: string;
+  message: string;
+}
 
 @Component({
   selector: 'app-article-form',
@@ -15,6 +21,8 @@ export class ArticleFormComponent implements OnInit {
   imageError: string | null;
   isImageSaved: boolean;
   cardImageBase64: string;
+  alerts: Alert[];
+
   @ViewChild('articleForm') articleForm: any;
 
   constructor(private newsService: NewsService, private route: ActivatedRoute) {
@@ -22,6 +30,8 @@ export class ArticleFormComponent implements OnInit {
     this.imageError = "";
     this.cardImageBase64= "";
     this.isImageSaved = true;
+    this.alerts = [];
+
   }
 
   ngOnInit(): void {
@@ -38,6 +48,7 @@ export class ArticleFormComponent implements OnInit {
             console.log(err);
           },
           () => { // Operation finished
+
             console.log('Operation finished');
           }
         );
@@ -50,8 +61,16 @@ export class ArticleFormComponent implements OnInit {
     if(this.article.id == undefined ){
       this.newsService.createArticle(article).subscribe(
         article => { // No errors
+          this.alerts.push({
+            type: 'success',
+            message: 'Article created',
+          });
         },
         err => { // Error treatment
+          this.alerts.push({
+            type: 'danger',
+            message: 'Article creation error',
+          });
           console.log('error in create article');
           console.log(err);
         },
@@ -62,8 +81,16 @@ export class ArticleFormComponent implements OnInit {
     }else {
       this.newsService.updateArticle(article).subscribe(
         article => { // No errors
+          this.alerts.push({
+            type: 'success',
+            message: 'Article updated',
+          });
         },
         err => { // Error treatment
+          this.alerts.push({
+            type: 'danger',
+            message: 'Article update error',
+          });
           console.log('Update article goes wrong');
           console.log(err);
         },
@@ -110,6 +137,10 @@ export class ArticleFormComponent implements OnInit {
       reader.readAsDataURL(fileInput.target.files[0]);
     }
     return true;
+  }
+
+  close(alert: Alert) {
+    this.alerts.splice(this.alerts.indexOf(alert), 1);
   }
 
 }

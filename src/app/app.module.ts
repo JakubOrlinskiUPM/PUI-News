@@ -14,6 +14,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import { FilterOnCategoryPipe } from './pipes/filter-on-category.pipe';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import {NgbAlertModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     HttpClientModule,
     Ng2SearchPipeModule,
     FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot()
+    FroalaViewModule.forRoot(),
+    NgbAlertModule
   ],
   providers: [],
   bootstrap: [AppComponent]
