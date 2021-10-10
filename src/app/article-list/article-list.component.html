@@ -14,7 +14,9 @@
       <div class="card-group row">
         <div class="col-4" *ngFor="let article of articleList | filterOnCategory:chosenCategory">
           <div class="card m-2">
-            <img class="card-img-top" src="" alt="Card image cap">
+            <img [src]="'data:' + article.thumbnail_media_type + ';base64,' +
+              article.thumbnail_image " alt="Thumbnail data: {{article.thumbnail_image }}">
+
             <h5 class="card-title">{{article.title}}</h5>
             <div class="card-subtitle">{{article.category}}</div>
             <p class="card-text">{{article.abstract}}</p>
@@ -25,8 +27,8 @@
             </div>
             <ng-template #isLoggedIn>
               <div class="align-self-end">
-                <a href="#" [routerLink]="['/articleForm/'+ article.id]" class="btn btn-primary mx-2">Edit</a>
-                <a href="#" class="btn btn-primary">Remove</a>
+                <button [routerLink]="['/articleForm/'+ article.id]" class="btn btn-primary mx-2">Edit </button>
+                <button (click)="deleteArticle(article)" class="btn btn-primary">Remove </button>
                 <!--            TODO: actually implement forwarding here-->
               </div>
             </ng-template>
