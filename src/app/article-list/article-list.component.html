@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-center">
     <div
       *ngFor="let category of categoryList"
-      class="m-2"
+      class="m-2 category-button"
       (click)="setCategory(category)"
       [ngClass]="category === chosenCategory ? 'active' : 'inactive'">
       {{ category }}
@@ -12,26 +12,38 @@
   <div class="d-flex ">
     <div class="container">
       <div class="card-group row">
+
+        <div class="col-4" id="add-new" *ngIf="logInService.isLogged()">
+          <div class="card m-2" [routerLink]="['/articleForm/']">
+            <img
+              style="aspect-ratio: 16/9;"
+              src="data:image/png;base64,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"
+              alt="Add new article">
+            <button [routerLink]="['/articleForm/']" class="btn btn-primary">Add a new article</button>
+          </div>
+        </div>
+
         <div class="col-4" *ngFor="let article of articleList | filterOnCategory:chosenCategory">
-          <div class="card m-2">
-            <img [src]="'data:' + article.thumbnail_media_type + ';base64,' +
-              article.thumbnail_image " alt="Thumbnail data: {{article.thumbnail_image }}">
+          <div class="card m-2" *ngIf="article.thumbnail_image">
+            <img style="aspect-ratio: 16/9;" [src]="'data:' + article.thumbnail_media_type + ';base64,' +
+              article.thumbnail_image " alt="Article thumbnail">
 
-            <h5 class="card-title">{{article.title}}</h5>
-            <div class="card-subtitle">{{article.category}}</div>
-            <p class="card-text">{{article.abstract}}</p>
+            <div class="p-1">
+              <h5 class="card-title">{{article.title}}</h5>
+              <div class="card-subtitle">{{article.category}}</div>
+              <p class="card-text">{{article.abstract}}</p>
 
-            <div *ngIf="!logInService.isLogged(); else isLoggedIn">
-              <a href="#" class="btn btn-primary float-right">Read more</a>
-<!--            TODO: actually implement forwarding here-->
-            </div>
-            <ng-template #isLoggedIn>
-              <div class="align-self-end">
-                <button [routerLink]="['/articleForm/'+ article.id]" class="btn btn-primary mx-2">Edit </button>
-                <button (click)="deleteArticle(article)" class="btn btn-primary">Remove </button>
-                <!--            TODO: actually implement forwarding here-->
+              <div *ngIf="!logInService.isLogged(); else isLoggedIn">
+                <button [routerLink]="['/articleView/'+ article.id]" class="btn btn-primary float-right">Read more
+                </button>
               </div>
-            </ng-template>
+              <ng-template #isLoggedIn>
+                <div class="align-self-end">
+                  <button [routerLink]="['/articleForm/'+ article.id]" class="btn btn-primary mx-2">Edit</button>
+                  <button (click)="deleteArticle(article)" class="btn btn-primary">Remove</button>
+                </div>
+              </ng-template>
+            </div>
           </div>
 
         </div>

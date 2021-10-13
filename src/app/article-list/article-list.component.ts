@@ -9,13 +9,13 @@ import {NewsService} from "../services/news.service";
   styleUrls: ['./article-list.component.css']
 })
 export class ArticleListComponent implements OnInit {
-  categoryList: string[] = ['All', 'International', 'National', 'Sports', 'Economy'];
+  categoryList: string[] = ['All', 'National', 'Sports', 'Technology', 'Economy'];
   chosenCategory: string;
 
   articleList: Article[];
   article: Article;
 
-  constructor(public logInService: LogInService, private newsService: NewsService) {
+  constructor(public logInService: LogInService, public newsService: NewsService) {
     this.chosenCategory = 'All';
     this.article = {
       abstract: "",
@@ -61,7 +61,10 @@ export class ArticleListComponent implements OnInit {
 
   deleteArticle(article: Article) {
     let returnStatement;
-    this.newsService.deleteArticle(article).subscribe(rv => returnStatement = rv);
+    this.newsService.deleteArticle(article).subscribe(rv => {
+      returnStatement = rv
+      console.log(rv);
+    });
     console.log(returnStatement)
     this.getRemoteArticles();
     // TODO: use returnStatement for a notification to the user
