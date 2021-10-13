@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {LogInService} from "../services/log-in.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 
 interface LogInData {
@@ -18,7 +19,9 @@ export class LogInComponent implements OnInit {
   logInData: LogInData = {username: 'DEV_TEAM_02', password: '123502'};
   @ViewChild('loginForm') loginForm: any;
 
-  constructor(public logInService: LogInService) {
+  closeResult = '';
+
+  constructor(public logInService: LogInService, private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
@@ -28,15 +31,24 @@ export class LogInComponent implements OnInit {
     this.showSignIn = !this.showSignIn;
   }
 
-  logIn() {
+  logIn(onSuccess: any) {
     console.log("log in");
     this.logInService.login(this.logInData.username, this.logInData.password).subscribe(
-      (res) => {
-        console.log("success", res)
-      }, (error) => {
+      () => onSuccess,
+      (error) => {
 
       }, () => {
 
       })
   }
+
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.logIn(this.modalService.dismissAll);
+    }, (reason) => {
+      console.log(this.closeResult)
+
+    });
+  }
+
 }

@@ -1,36 +1,49 @@
-<div  class="align-items-center">
+<div class="align-items-center">
   <div id="logIn" *ngIf="!logInService.isLogged(); else loggedIn">
     <div class="text-center">
-      <button class="btn button" type="button" (click)="toggleSignIn()" *ngIf="!showSignIn">
+      <button class="btn button" type="button" (click)="open(content)">
         <i class="bi bi-person-circle"></i> Log In
       </button>
     </div>
 
-    <div class="" *ngIf="showSignIn">
-      <form (ngSubmit)="logIn()" #loginForm="ngForm" class="d-flex flex-row justify-content-around">
-        <label class="form-label">
-          Username:
-          <input type="text" name="username" [(ngModel)]="logInData.username" #username='ngModel' class="form-control"
-                 autofocus>
-        </label>
-        <label class="form-label">
-          Password:
-          <input type="password" name="password" [(ngModel)]="logInData.password" #password='ngModel'
-                 class="form-control">
-        </label>
-
-        <button class="btn button" type="submit">
-          <i class="bi bi-person-circle"></i> Log In
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Log in</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
         </button>
-      </form>
-    </div>
+      </div>
+      <div class="modal-body">
+        <form #loginForm="ngForm" class="text-center">
+          <div class="form-group">
+            <label class="form-label">
+              Username:
+              <input type="text" name="username" [(ngModel)]="logInData.username" #username='ngModel'
+                     class="form-control"
+                     autofocus>
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="form-label">
+              Password:
+              <input type="password" name="password" [(ngModel)]="logInData.password" #password='ngModel'
+                     class="form-control">
+            </label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn button button--light" (click)="modal.close('Login')">Login</button>
+      </div>
+    </ng-template>
+
   </div>
 
   <ng-template #loggedIn>
-    <div  class="text-center">
+    <div class="text-center">
       <span class="px-2">Welcome {{logInService.getUser()?.username}}</span>
 
-      <button (click)="logInService.logout()" >Sign out</button>
+      <button class="button btn" (click)="logInService.logout()">Sign out</button>
     </div>
   </ng-template>
 </div>
