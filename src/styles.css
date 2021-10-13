@@ -5,7 +5,9 @@
 :root {
   --color-text: white;
   --color-text-dark: #999;
+  --color-text-light: #bbb;
   --color-background: #1B262C;
+  --color-background-light: #354046;
   --color-accent: #0F4C75;
   --color-accent-dark: #3282B8;
   --color-accent-light: #BBE1FA;
