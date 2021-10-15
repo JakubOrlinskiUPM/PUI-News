@@ -15,3 +15,7 @@
 .active {
   color: var(--color-text);
 }
+
+.router-link-active {
+  cursor: pointer;
+}

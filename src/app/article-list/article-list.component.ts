@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Article} from "../models/article";
 import {LogInService} from "../services/log-in.service";
 import {NewsService} from "../services/news.service";
+import {Alert} from "../models/alert";
 
 @Component({
   selector: 'app-article-list',
@@ -14,6 +15,7 @@ export class ArticleListComponent implements OnInit {
 
   articleList: Article[];
   article: Article;
+  alerts: Alert[];
 
   constructor(public logInService: LogInService, public newsService: NewsService) {
     this.chosenCategory = 'All';
@@ -32,6 +34,7 @@ export class ArticleListComponent implements OnInit {
     };
 
     this.articleList = [this.article];
+    this.alerts = [];
 
     // this.articleList = [{id: 0, category: 'Sports', title: 'Female Soccer Players Are Done Taking Abuse. Let’s Stop Dishing It Out.', subtitle:'When will we stop treating women in sports as second-class citizens?', abstract: 'Players in the National Women’s Soccer League are demanding the respect all female athletes deserve but rarely get.', body:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image_media_type: ""},
     //   {id: 1, category: 'International', title: 'Boris Johnson: petrol crisis and pig cull part of necessary post-Brexit transition', subtitle: 'Supply chain crisis', abstract: 'Prime minister says UK cannot go back to ‘failed old model’ of immigration and low wages', body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image_media_type: ""},
@@ -57,16 +60,36 @@ export class ArticleListComponent implements OnInit {
 
   getRemoteArticles(){
     this.newsService.getArticles().subscribe(list => this.articleList = list);
+    console.log(this.articleList)
   }
 
   deleteArticle(article: Article) {
-    let returnStatement;
-    this.newsService.deleteArticle(article).subscribe(rv => {
-      returnStatement = rv
-      console.log(rv);
-    });
-    console.log(returnStatement)
-    this.getRemoteArticles();
-    // TODO: use returnStatement for a notification to the user
+    if(confirm("Are you sure you want to delete the " + article.title + " article?" )) {
+      this.newsService.deleteArticle(article).subscribe(
+        article => { // No errors
+          this.alerts.push({
+            type: 'success',
+            message: 'Article deleted',
+          });
+          this.getRemoteArticles();
+        },
+          err => { // Error treatment
+            this.alerts.push({
+              type: 'danger',
+              message: 'Article deletion error',
+            });
+            console.log('error in deletion of article');
+            console.log(err);
+            this.getRemoteArticles();
+          },
+          () => { // Operation finished
+            console.log('Delete finished');
+          }
+      );
+    }
+  }
+
+  close(alert: Alert) {
+    this.alerts.splice(this.alerts.indexOf(alert), 1);
   }
 }

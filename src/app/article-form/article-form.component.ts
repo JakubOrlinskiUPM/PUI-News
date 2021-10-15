@@ -1,14 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Article} from "../models/article";
-import { NewsService } from '../services/news.service';
-import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NewsService} from '../services/news.service';
+import {ActivatedRoute} from '@angular/router';
 import * as _ from 'lodash';
+import {Alert} from "../models/alert";
 
-interface Alert {
-  type: string;
-  message: string;
-}
 
 @Component({
   selector: 'app-article-form',
@@ -77,7 +73,7 @@ export class ArticleFormComponent implements OnInit {
         () => { // Operation finished
           console.log('Create finished');
         }
-      );;
+      );
     }else {
       this.newsService.updateArticle(article).subscribe(
         article => { // No errors
@@ -123,8 +119,7 @@ export class ArticleFormComponent implements OnInit {
         const image = new Image();
         image.src = e.target.result;
         image.onload = rs => {
-          const imgBase64Path = e.target.result;
-          this.cardImageBase64 = imgBase64Path;
+          this.cardImageBase64 = e.target.result;
           this.isImageSaved = true;
 
           this.article.image_media_type = fileInput.target.files[0].type;
