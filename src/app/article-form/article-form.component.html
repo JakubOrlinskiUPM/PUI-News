@@ -9,15 +9,15 @@
     <form #articleForm="ngForm" (ngSubmit)="sendForm(article)">
 
       <div class="form-group">
-        <label> Title: </label>
+        <label> Title*: </label>
         <input class="form-control" type="text" required [(ngModel)]="article.title" name="atitle" #atitle="ngModel"
-               [ngClass]="atitle.valid || atitle.pristine ? '': 'bg-danger'">
+               [ngClass]="atitle.valid || atitle.pristine ? '': 'border border-danger input-error'">
       </div>
 
       <div class="form-group">
-        <label> Subtitle: </label>
+        <label> Subtitle*: </label>
         <input class="form-control" type="text" required [(ngModel)]="article.subtitle" name="asubtitle" #asubtitle="ngModel"
-               [ngClass]="asubtitle.valid || asubtitle.pristine ? '': 'bg-danger'">
+               [ngClass]="asubtitle.valid || asubtitle.pristine ? '': 'border border-danger input-error'">
       </div>
 
       <div class="form-group">
@@ -32,9 +32,9 @@
       </div>
 
       <div class="form-group">
-        <label> Abstract: </label>
-        <input class="form-control required" type="text" required [(ngModel)]="article.abstract" name="aabstract" #aabstract="ngModel"
-               [ngClass]="aabstract.valid || aabstract.pristine ? '': 'bg-danger'">
+        <label> Abstract*: </label>
+        <input class="form-control" type="text" required [(ngModel)]="article.abstract" name="aabstract" #aabstract="ngModel"
+               [ngClass]="aabstract.valid || aabstract.pristine ? '': 'border border-danger input-error'">
       </div>
 
       <div class="form-group">
@@ -48,7 +48,7 @@
 
       <div class="text-right">
         <button class="btn btn-secondary btn-sm mr-1" type="button" [routerLink]="['/articleList/']">Cancel</button>
-        <button class="btn btn-success btn-sm mr-1" type="submit" [disabled]="!articleForm.form.valid">Save</button>
+        <button class="btn btn-success btn-sm mr-1" type="submit"  [disabled]="!articleForm.form.valid">Save</button>
       </div>
 
     </form>

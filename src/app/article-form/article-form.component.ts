@@ -25,7 +25,7 @@ export class ArticleFormComponent implements OnInit {
 
   @ViewChild('articleForm') articleForm: any;
 
-  constructor(private newsService: NewsService, private route: ActivatedRoute) {
+  constructor(private newsService: NewsService, private route: ActivatedRoute, private router: Router) {
     this.article = {category: "", title: "", subtitle: "", abstract: "", image_media_type: ""};
     this.imageError = "";
     this.cardImageBase64= "";
@@ -42,6 +42,7 @@ export class ArticleFormComponent implements OnInit {
         this.newsService.getArticle(+paramId).subscribe(
           article => { // No errors
             this.article = article;
+            this.article.file_input = this.article.image_data;
           },
           err => { // Error treatment
             console.log('Something goes wrong');
@@ -65,6 +66,7 @@ export class ArticleFormComponent implements OnInit {
             type: 'success',
             message: 'Article created',
           });
+          this.router.navigate(['/articleView/' + article.id]);
         },
         err => { // Error treatment
           this.alerts.push({
@@ -85,6 +87,7 @@ export class ArticleFormComponent implements OnInit {
             type: 'success',
             message: 'Article updated',
           });
+          this.router.navigate(['/articleView/' + article.id]);
         },
         err => { // Error treatment
           this.alerts.push({
