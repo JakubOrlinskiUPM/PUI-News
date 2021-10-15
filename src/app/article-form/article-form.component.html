@@ -21,7 +21,7 @@
       </div>
 
       <div class="form-group">
-        <label> Category: </label>
+        <label> Category*: </label>
         <select class="form-control" type="text" required [(ngModel)]="article.category" name="acategory" #acategory="ngModel">
           <option disabled selected value> -- Select a Category -- </option>
           <option value="National">National</option>
@@ -38,7 +38,7 @@
       </div>
 
       <div class="form-group">
-        <input type="file" accept="image/*" (change)="fileChangeEvent($event)" [(ngModel)]="article.file_input" name="afile_input" #afile_input="ngModel">
+        <input type="file" accept="image/*" (change)="fileChangeEvent($event)" >
       </div>
 
       <div class="form-group">
@@ -48,7 +48,7 @@
 
       <div class="text-right">
         <button class="btn btn-secondary btn-sm mr-1" type="button" [routerLink]="['/articleList/']">Cancel</button>
-        <button class="btn btn-success btn-sm mr-1" type="submit"  [disabled]="!articleForm.form.valid">Save</button>
+        <button class="btn btn-success btn-sm mr-1" type="submit"  [disabled]="!articleForm.form.valid || article.image_data == null">Save</button>
       </div>
 
     </form>

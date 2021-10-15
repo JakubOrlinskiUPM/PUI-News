@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Article} from "../models/article";
 import {NewsService} from '../services/news.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router } from '@angular/router';
 import * as _ from 'lodash';
 import {Alert} from "../models/alert";
 
