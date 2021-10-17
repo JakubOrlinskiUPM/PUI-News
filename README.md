@@ -33,7 +33,7 @@ These points **need** to be addressed (A) and then verified by another user (V) 
 
 1. Implement Detail View of article **(A)**
 4. Remove empty spots in grid on the main page **(A)**
-5. Allow user to create article without image
+5. Allow user to create article without image **(Article has to have an image right? -Anna)**
    1. Currently, attempting this results in 'Error creating article'
       1. Okay this bug is more complex than it appears. It throws an error, but the article is actually created. These imageless articles are then the gaps on the main page.
    2. Fix issue that article creation without image throws an error.
