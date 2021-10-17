@@ -44,7 +44,7 @@ These points **need** to be addressed (A) and then verified by another user (V) 
 10. The navigation bar needs to include a text field to add some text that will be used to filter the articles shown in the main page of the newspaper **(A)**
 11. Page should be readable on mobile devices **(A)**
 12. Article body can be filled in HTML format (a WYSIWYG editor can be used).**(A)**
-13. Back button on article view.
+13. Back button on article view.**(A)**
 
 ## Minor Issues
 These points should be addressed (A) and then verified by another user (V),
