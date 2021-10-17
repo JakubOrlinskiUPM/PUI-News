@@ -31,7 +31,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Major Issues
 These points **need** to be addressed (A) and then verified by another user (V) before subimission:
 
-1. Implement Detail View of article
+1. Implement Detail View of article **(A)**
 4. Remove empty spots in grid on the main page **(A)**
 5. Allow user to create article without image
    1. Currently, attempting this results in 'Error creating article'
