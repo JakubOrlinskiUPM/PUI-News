@@ -9,5 +9,7 @@ export interface Article {
   image_media_type: string,
   thumbnail_image?: string,
   thumbnail_media_type?: string,
-  file_input?: any
+  file_input?: any,
+  update_date?: string, 
+  id_user?: string
 }

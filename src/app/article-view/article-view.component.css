@@ -1,0 +1,9 @@
+.img-size{
+    width: 75%;
+    height: 500px;
+    display: inline-block;
+    margin: 50px 10%;
+    box-shadow: 0 27px 87 px rgba(0,0,0,0.37);
+    border-radius: 5px;
+    overflow: hidden;
+}

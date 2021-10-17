@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { LogInService } from "../services/log-in.service";
+import { NewsService } from "../services/news.service";
+import { Article } from '../models/article';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-article-view',
@@ -7,9 +12,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleViewComponent implements OnInit {
 
-  constructor() { }
+  article: Article | undefined;
+  articleId?: number;
+  username?: User;
+  date?: string;
+
+  constructor(private newsService: NewsService,
+    private loginService: LogInService,
+    private route: ActivatedRoute
+    ) {}
 
   ngOnInit(): void {
+    this.articleId = Number(this.route.snapshot.paramMap.get('articleId'));
+    this.newsService.getArticle(this.articleId).subscribe(id => this.article = id);
+    this.loginService.getUser();
   }
 
 }
