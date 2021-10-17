@@ -13,12 +13,16 @@ export class ArticleListComponent implements OnInit {
   categoryList: string[] = ['All', 'National', 'Sports', 'Technology', 'Economy'];
   chosenCategory: string;
 
+  searchQuery: string;
+
   articleList: Article[];
   article: Article;
   alerts: Alert[];
 
   constructor(public logInService: LogInService, public newsService: NewsService) {
     this.chosenCategory = 'All';
+    this.searchQuery = "";
+
     this.article = {
       abstract: "",
       body: "",
