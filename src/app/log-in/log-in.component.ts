@@ -19,7 +19,7 @@ export class LogInComponent implements OnInit {
   logInData: LogInData = {username: 'DEV_TEAM_02', password: '123502'};
   @ViewChild('loginForm') loginForm: any;
 
-  closeResult = '';
+  error: string | null = null;
 
   constructor(public logInService: LogInService, private modalService: NgbModal) {
   }
@@ -31,24 +31,25 @@ export class LogInComponent implements OnInit {
     this.showSignIn = !this.showSignIn;
   }
 
-  logIn(onSuccess: any) {
+  logIn() {
     console.log("log in");
     this.logInService.login(this.logInData.username, this.logInData.password).subscribe(
-      () => onSuccess,
+      (user) => {
+        this.modalService.dismissAll();
+      },
       (error) => {
-
+        if (error) {
+          this.error = 'Wrong credentials. Please try again.';
+        } else {
+          this.error = 'Something went wrong.';
+        }
       }, () => {
 
       })
   }
 
   open(content: any) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.logIn(this.modalService.dismissAll);
-    }, (reason) => {
-      console.log(this.closeResult)
-
-    });
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})
   }
 
 }

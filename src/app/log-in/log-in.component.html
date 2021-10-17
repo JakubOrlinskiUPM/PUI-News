@@ -31,9 +31,10 @@
             </label>
           </div>
         </form>
+        <div *ngIf="error" class="bg-danger card p-2 text-center">{{error}}</div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn button button--light" (click)="modal.close('Login')">Login</button>
+        <button type="button" class="btn button button--light" (click)="logIn()">Login</button>
       </div>
     </ng-template>
 
