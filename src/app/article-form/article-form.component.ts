@@ -62,7 +62,6 @@ export class ArticleFormComponent implements OnInit {
             type: 'success',
             message: 'Article created',
           });
-          this.router.navigate(['/articleView/' + article.id]);
         },
         err => { // Error treatment
           this.alerts.push({
@@ -83,7 +82,6 @@ export class ArticleFormComponent implements OnInit {
             type: 'success',
             message: 'Article updated',
           });
-          this.router.navigate(['/articleView/' + article.id]);
         },
         err => { // Error treatment
           this.alerts.push({
