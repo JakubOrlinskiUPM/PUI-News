@@ -33,7 +33,7 @@ These points **need** to be addressed (A) and then verified by another user (V) 
 
 1. Implement Detail View of article **(A)**
 4. Remove empty spots in grid on the main page **(A)**
-5. Allow user to create article without image **(Article has to have an image right? -Anna)**
+5. Allow user to create article without image **(Article has to have an image right? -Anna)** **(A)**
    1. Currently, attempting this results in 'Error creating article'
       1. Okay this bug is more complex than it appears. It throws an error, but the article is actually created. These imageless articles are then the gaps on the main page.
    2. Fix issue that article creation without image throws an error.
@@ -44,6 +44,7 @@ These points **need** to be addressed (A) and then verified by another user (V) 
 10. The navigation bar needs to include a text field to add some text that will be used to filter the articles shown in the main page of the newspaper
 11. Page should be readable on mobile devices
 12. Article body can be filled in HTML format (a WYSIWYG editor can be used).**(A)**
+13. Back button on article view.
 
 ## Minor Issues
 These points should be addressed (A) and then verified by another user (V),
