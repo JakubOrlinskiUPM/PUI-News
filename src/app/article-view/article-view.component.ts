@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LogInService } from "../services/log-in.service";
 import { NewsService } from "../services/news.service";
 import { Article } from '../models/article';
-import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { User } from '../models/user';
 
 @Component({

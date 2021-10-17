@@ -19,8 +19,11 @@
             <h6 class="text-center font-italic"> {{article?.abstract}} </h6>
         </div>
         <div class="mt-5 text-justify justify-content-center mb-4" [innerHTML]="article?.body"></div>
-        <footer class="text-right">
+        <footer class="text-left">
             <p class="font-italic">{{article?.id_user}} <span class="font-italic">| {{article?.update_date}}</span></p>
+        </footer>
+        <footer class="text-right">
+            <button [routerLink]="['/articleList/']" class="mb-2 btn btn-primary">Back</button>
         </footer>
     </div>
 </div>
